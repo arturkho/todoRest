@@ -12,10 +12,10 @@ public class ListController {
     TasksList list1 = new TasksList();
 
     private List<TasksList> tasksLists = new ArrayList<TasksList>() {{
-        list1.setName("list1");
+        list1.setListName("list1");
         list1.setId(0);
         add(list1);
-        list1.setName("list2");
+        list1.setListName("list2");
         list1.setId(0);
         add(list1);
     }};
@@ -44,7 +44,7 @@ public class ListController {
     public TasksList update(@PathVariable Integer id, @RequestBody TasksList tasksList) {
         TasksList listFromDb = tasksLists.get(id);
         listFromDb.setId(tasksList.getId());
-        listFromDb.setName(tasksList.getName());
+        listFromDb.setListName(tasksList.getListName());
 
         return listFromDb;
     }

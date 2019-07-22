@@ -10,31 +10,31 @@ public class Task {
         return id;
     }
 
-    public boolean isDone() {
-        return isDone;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getName() {
+    public String getTaskName() {
         return taskName;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
     }
 
     public int getListId() {
         return listId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setListId(int listId) {
+        this.listId = listId;
     }
 
-    public void setName(String name) {
-        this.taskName = name;
+    public boolean isDone() {
+        return isDone;
     }
 
     public void setDone(boolean done) {
         isDone = done;
-    }
-
-    public void setListId(int listId) {
-        this.listId = listId;
     }
 }

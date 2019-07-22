@@ -1,10 +1,10 @@
 package com.rest.todoRest.task;
 
-import com.rest.todoRest.exeptions.NotFoundExeption;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/tasks")
@@ -12,12 +12,12 @@ public class TaskController {
     Task task1 = new Task();
     Task task2 = new Task();
     private List<Task> tasks = new ArrayList<Task>(){{
-        task1.setName("task1");
+        task1.setTaskName("task1");
         task1.setId(0);
         task1.setDone(false);
         task1.setListId(0);
         add(task1);
-        task2.setName("task2");
+        task2.setTaskName("task2");
         task2.setId(1);
         task2.setDone(false);
         task2.setListId(1);
@@ -29,11 +29,10 @@ public class TaskController {
         return tasks;
     }
 
-    @GetMapping("?listId={id}")
-    public Task getTaskById(@PathVariable Integer listId){
-        return tasks.stream().filter(tasks -> tasks.getListId() == listId)
-                .findFirst()
-                .orElseThrow(NotFoundExeption::new);
+    @GetMapping("/{id}")
+    public List<Task> getTaskById(@PathVariable Integer id){
+        return tasks.stream().filter(tasks -> tasks.getListId() == id)
+                .collect(Collectors.toList());
     }
 
     @PostMapping
@@ -48,7 +47,7 @@ public class TaskController {
         taskFromDb.setDone(task.isDone());
         taskFromDb.setListId(task.getListId());
         taskFromDb.setId(task.getId());
-        taskFromDb.setName(task.getName());
+        taskFromDb.setTaskName(task.getTaskName());
 
         return taskFromDb;
     }
