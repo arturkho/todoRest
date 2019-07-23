@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
-    Task task1 = new Task();
-    Task task2 = new Task();
+    private Task task1 = new Task();
+    private Task task2 = new Task();
     private List<Task> tasks = new ArrayList<Task>(){{
         task1.setTaskName("task1");
         task1.setId(0);
@@ -48,7 +48,6 @@ public class TaskController {
         taskFromDb.setListId(task.getListId());
         taskFromDb.setId(task.getId());
         taskFromDb.setTaskName(task.getTaskName());
-
         return taskFromDb;
     }
 

@@ -6,35 +6,35 @@ public class Task {
     private int listId;
     private boolean isDone;
 
-    public int getId() {
+    int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 
-    public String getTaskName() {
+    String getTaskName() {
         return taskName;
     }
 
-    public void setTaskName(String taskName) {
+    void setTaskName(String taskName) {
         this.taskName = taskName;
     }
 
-    public int getListId() {
+    int getListId() {
         return listId;
     }
 
-    public void setListId(int listId) {
+    void setListId(int listId) {
         this.listId = listId;
     }
 
-    public boolean isDone() {
+    boolean isDone() {
         return isDone;
     }
 
-    public void setDone(boolean done) {
+    void setDone(boolean done) {
         isDone = done;
     }
 }
