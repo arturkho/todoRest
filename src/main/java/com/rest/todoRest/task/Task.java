@@ -1,40 +1,54 @@
 package com.rest.todoRest.task;
 
-public class Task {
-    private int id;
-    private String taskName;
-    private int listId;
-    private boolean isDone;
+import com.rest.todoRest.list.TasksList;
 
-    int getId() {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "task")
+public class Task {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String taskName;
+
+    @ManyToOne
+    @JoinColumn(name = "list_id", nullable = false)
+    private TasksList tasksList;
+
+    private boolean done;
+
+    private Task(){ }
+    public int getId() {
         return id;
     }
 
-    void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    String getTaskName() {
+    public String getTaskName() {
         return taskName;
     }
 
-    void setTaskName(String taskName) {
+    public void setTaskName(String taskName) {
         this.taskName = taskName;
     }
 
-    int getListId() {
-        return listId;
+    public TasksList getTasksList() {
+        return tasksList;
     }
 
-    void setListId(int listId) {
-        this.listId = listId;
+    public void setTasksList(TasksList tasksList) {
+        this.tasksList = tasksList;
     }
 
-    boolean isDone() {
-        return isDone;
+    public boolean isDone() {
+        return done;
     }
 
-    void setDone(boolean done) {
-        isDone = done;
+    public void setDone(boolean done) {
+        this.done = done;
     }
 }

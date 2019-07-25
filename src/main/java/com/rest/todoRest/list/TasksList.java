@@ -1,22 +1,31 @@
 package com.rest.todoRest.list;
 
-class TasksList {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tasks_list")
+public class TasksList {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "list_name", nullable = false)
     private String listName;
 
-    int getId() {
+    public int getId() {
         return id;
     }
 
-    void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    String getListName() {
+    public String getListName() {
         return listName;
     }
 
-    void setListName(String listName) {
+    public void setListName(String listName) {
         this.listName = listName;
     }
 }
