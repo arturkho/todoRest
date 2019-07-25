@@ -13,19 +13,14 @@ public class TaskController {
     }
 
 
-//    @GetMapping
-//    public List<TaskDto> tasks() {
-//        return taskService.getTasks();
-//    }
-
     @GetMapping("/{id}")
     public List<TaskDto> getTaskById(@PathVariable Integer id) {
         return taskService.getTasksByListId(id);
     }
 
     @PostMapping
-    public Task create(@RequestBody Task task) {
-        return taskService.createTask(task);
+    public TaskDto create(@RequestBody TaskDto taskDto) {
+        return taskService.createTask(taskDto);
     }
 
     @PutMapping("/{id}")

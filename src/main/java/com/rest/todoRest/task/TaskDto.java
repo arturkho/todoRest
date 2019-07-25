@@ -1,18 +1,19 @@
 package com.rest.todoRest.task;
 
 public class TaskDto {
+
     private String taskName;
     private int id;
+    private boolean done;
+    private int listId;
 
     public boolean isDone() {
-        return isDone;
+        return done;
     }
 
     public void setDone(boolean done) {
-        isDone = done;
+        this.done = done;
     }
-
-    private boolean isDone;
 
     public String getTaskName() {
         return taskName;
@@ -38,9 +39,5 @@ public class TaskDto {
         this.listId = listId;
     }
 
-    private int listId;
-    public TaskDto(){
-
-    }
 
 }

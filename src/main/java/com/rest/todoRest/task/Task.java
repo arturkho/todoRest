@@ -3,6 +3,7 @@ package com.rest.todoRest.task;
 import com.rest.todoRest.list.TasksList;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Table(name = "task")
@@ -17,9 +18,9 @@ public class Task {
     @JoinColumn(name = "list_id", nullable = false)
     private TasksList tasksList;
 
+    @Column(name = "is_done")
     private boolean done;
 
-    private Task(){ }
     public int getId() {
         return id;
     }
@@ -51,4 +52,5 @@ public class Task {
     public void setDone(boolean done) {
         this.done = done;
     }
+
 }
