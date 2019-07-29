@@ -20,6 +20,7 @@ public class Task {
 
     @Column(name = "is_done")
     private boolean done;
+    private String description;
 
     public int getId() {
         return id;
@@ -51,5 +52,13 @@ public class Task {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

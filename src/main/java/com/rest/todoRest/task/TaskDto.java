@@ -6,6 +6,7 @@ public class TaskDto {
     private int id;
     private boolean done;
     private int listId;
+    private String description;
 
     public boolean isDone() {
         return done;
@@ -40,4 +41,11 @@ public class TaskDto {
     }
 
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

@@ -41,6 +41,7 @@ public class TaskService {
         Task taskFromDb = taskRepository.findById(id).orElse(new Task());
         taskFromDb.setDone(taskDto.isDone());
         taskFromDb.setTaskName(taskDto.getTaskName());
+        taskFromDb.setDescription(taskDto.getDescription());
         taskRepository.save(fromDtoToTask(taskDto));
         return taskDto;
     }
@@ -51,6 +52,7 @@ public class TaskService {
         taskDto.setListId(task.getTasksList().getId());
         taskDto.setTaskName(task.getTaskName());
         taskDto.setId(task.getId());
+        taskDto.setDescription(task.getDescription());
         return taskDto;
     }
 
@@ -59,6 +61,7 @@ public class TaskService {
         task.setDone(taskDto.isDone());
         task.setTaskName(taskDto.getTaskName());
         task.setId(taskDto.getId());
+        task.setDescription(taskDto.getDescription());
         task.setTasksList(listRepository.findById(taskDto.getListId()).orElse(new TasksList()));
         return task;
 
