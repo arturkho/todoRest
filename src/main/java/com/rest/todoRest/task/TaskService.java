@@ -27,6 +27,24 @@ public class TaskService {
                 .collect(Collectors.toList());
     }
 
+    public TaskDto createTask(TaskDto taskDto) {
+        Task task = fromDtoToTask(taskDto);
+        Task taskFromDb = taskRepository.save(task);
+        return fromTaskToDto(taskFromDb);
+    }
+
+    public void deleteTask(int id) {
+        taskRepository.deleteById(id);
+    }
+
+    public TaskDto update(Integer id, TaskDto taskDto) {
+        Task taskFromDb = taskRepository.findById(id).orElse(new Task());
+        taskFromDb.setDone(taskDto.isDone());
+        taskFromDb.setTaskName(taskDto.getTaskName());
+        taskRepository.save(fromDtoToTask(taskDto));
+        return taskDto;
+    }
+
     private TaskDto fromTaskToDto(Task task) {
         TaskDto taskDto = new TaskDto();
         taskDto.setDone(task.isDone());
@@ -44,23 +62,5 @@ public class TaskService {
         task.setTasksList(listRepository.findById(taskDto.getListId()).orElse(new TasksList()));
         return task;
 
-    }
-
-    public TaskDto createTask(TaskDto taskDto) {
-        Task task = fromDtoToTask(taskDto);
-        taskRepository.save(task);
-        return taskDto;
-    }
-
-    public void deleteTask(Integer id) {
-        taskRepository.deleteById(id);
-    }
-
-    public Task update(Integer id, Task task) {
-        Task taskFromDb = taskRepository.findById(id);
-        taskFromDb.setDone(task.isDone());
-        taskFromDb.setId(task.getId());
-        taskFromDb.setTaskName(task.getTaskName());
-        return taskFromDb;
     }
 }

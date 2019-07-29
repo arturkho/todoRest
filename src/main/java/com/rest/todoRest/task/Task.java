@@ -3,11 +3,11 @@ package com.rest.todoRest.task;
 import com.rest.todoRest.list.TasksList;
 
 import javax.persistence.*;
-import java.util.Optional;
 
 @Entity
 @Table(name = "task")
 public class Task {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -52,5 +52,4 @@ public class Task {
     public void setDone(boolean done) {
         this.done = done;
     }
-
 }
